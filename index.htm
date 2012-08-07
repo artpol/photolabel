@@ -1,0 +1,326 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>jQuery.photoLabel</title>
+<link type="image/x-icon" href="/favicon.ico" media="all" rel="shortcut icon">
+
+<link href="res/syntaxhighlighter.css" rel="stylesheet" type="text/css"/>
+<link href="res/photolabel_style.css" rel="stylesheet" type="text/css"/>
+
+<script src="/resource/js/jquery.min.js"></script>
+<script src="/templates/default/resource/js/common.js"></script>
+<script src="/templates/default/resource/js/jquery.color.js"></script>
+<script src="http://userapi.com/js/api/openapi.js?45"></script>
+</head>
+<body>
+
+<div class="title">
+    <h2>jQuery.photoLabel - это плагин, позволяющий отмечать людей и выводить отметки на фото,  подобно тому как это сделано ВКонтакте.</h2>
+</div>
+
+<h3>Информация</h3>
+Версия: 1.0.0<br>
+Автор: <b>Артём Полторанин</b><br>
+E-mail: artpol@readyscript.ru<br>
+Web-site: photolabel.readyscript.ru<br>
+Демо: <a target="_blank" href="demo/index.htm">открыть в новом окне</a>.
+
+<p>
+    <a href="demo/index.htm" target="_blank"><img src="res/small_pict1.jpg"></a>
+    <a href="demo/index.htm" target="_blank"><img src="res/small_pict2.jpg"></a>
+</p>
+
+    
+<h3>Возможности</h3>
+<ul>
+    <li>Подпись области на фото можно выбрать из списка или набрать текстом</li>
+    <li>Воспроизведение отметок на фотографиях любого размера, даже если отметки были поставлены на фото с другим размером.</li>
+    <li>Можно указать произвольную гиперссылку у каждой отметки</li>
+    <li>Отложенная загрузка списка друзей</li>
+    <li>Быстрый поиск среди списка друзей</li>
+    <li>Встроена логика модерирования отметок </li>
+</ul>
+
+    
+<h3>Как подключить?</h3>
+<p>1. Разметка HTML</p>
+    <div id="hlDiv" class="dp-highlighter"><div class="bar"></div><ul class="dp-xml" start="1"><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">id</span><span>=</span><span class="attribute-value">"block-1"</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"photoLabel"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"imgWrap"</span><span>&nbsp;</span><span class="attribute">style</span><span>=</span><span class="attribute-value">"width:700px;"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;Плагин&nbsp;навешивается&nbsp;на&nbsp;этот&nbsp;элемент.&nbsp;Он&nbsp;должен&nbsp;иметь&nbsp;фиксированную&nbsp;ширину&nbsp;и&nbsp;внутреннее&nbsp;выравнивание&nbsp;по&nbsp;центру&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">img</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"res/img/photo1.jpg"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;Блок&nbsp;со&nbsp;списком&nbsp;отметок&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"labelBox"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"recoverTags"</span><span class="tag">&gt;</span><span class="comments">&lt;!--&nbsp;здесь&nbsp;будет&nbsp;ссылка&nbsp;на&nbsp;восстановление&nbsp;тега&nbsp;--&gt;</span><span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"labelList"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;этот&nbsp;блок&nbsp;будет&nbsp;скрываться,&nbsp;если&nbsp;отметок&nbsp;нет&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;На&nbsp;этой&nbsp;фотографии:&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">ul</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"labels"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;здесь&nbsp;будут&nbsp;перечилены&nbsp;отметки&nbsp;на&nbsp;фото&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">ul</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;Конец&nbsp;блока&nbsp;со&nbsp;списком&nbsp;отметок&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;Блок&nbsp;с&nbsp;кнопками&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">div</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"tools"</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">a</span><span>&nbsp;</span><span class="attribute">href</span><span>=</span><span class="attribute-value">"JavaScript:;"</span><span>&nbsp;</span><span class="attribute">onclick</span><span>=</span><span class="attribute-value">"$('#block-1&nbsp;.imgWrap').photoLabel('start')"</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"turnOn"</span><span class="tag">&gt;</span><span>Отметить&nbsp;человека&nbsp;на&nbsp;фото</span><span class="tag">&lt;/</span><span class="tag-name">a</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;</span><span class="tag-name">a</span><span>&nbsp;</span><span class="attribute">href</span><span>=</span><span class="attribute-value">"JavaScript:;"</span><span>&nbsp;</span><span class="attribute">onclick</span><span>=</span><span class="attribute-value">"$('#block-1&nbsp;.imgWrap').photoLabel('stop')"</span><span>&nbsp;</span><span class="attribute">style</span><span>=</span><span class="attribute-value">"display:none"</span><span>&nbsp;</span><span class="attribute">class</span><span>=</span><span class="attribute-value">"turnOff"</span><span class="tag">&gt;</span><span>Готово</span><span class="tag">&lt;/</span><span class="tag-name">a</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comments">&lt;!--&nbsp;Конец&nbsp;блока&nbsp;с&nbsp;кнопками&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="tag">&lt;/</span><span class="tag-name">div</span><span class="tag">&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="comments">&lt;!--&nbsp;Конец&nbsp;блока&nbsp;с&nbsp;фотографией,&nbsp;на&nbsp;которой&nbsp;есть&nbsp;отметки&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li></ul></div>
+
+<p>2. Подключение необходимых скриптов и стилей.</p>
+    <div id="hlDiv" class="dp-highlighter"><div class="bar"></div><ul class="dp-xml" start="1"><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">link</span><span>&nbsp;</span><span class="attribute">rel</span><span>=</span><span class="attribute-value">"stylesheet"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/css"</span><span>&nbsp;</span><span class="attribute">href</span><span>=</span><span class="attribute-value">"res/css/photolabel.css"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;стили&nbsp;jQuery.photolabel&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="tag">&lt;</span><span class="tag-name">link</span><span>&nbsp;</span><span class="attribute">rel</span><span>=</span><span class="attribute-value">"stylesheet"</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/css"</span><span>&nbsp;</span><span class="attribute">href</span><span>=</span><span class="attribute-value">"res/css/ui-lightness/jquery-ui-1.8.22.custom.css"</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;стили&nbsp;jQuery.ui&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;</span></li><li class=""><span><span class="tag">&lt;</span><span class="tag-name">script</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"res/js/jquery/jquery-1.7.2.min.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">script</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;jQuery&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span><span class="tag">&lt;</span><span class="tag-name">script</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"res/js/jquery/jquery-ui-1.8.22.custom.min.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">script</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;jQuery.ui&nbsp;--&gt;</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span><span class="tag">&lt;</span><span class="tag-name">script</span><span>&nbsp;</span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span>&nbsp;</span><span class="attribute">src</span><span>=</span><span class="attribute-value">"res/js/jquery.photolabel.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/</span><span class="tag-name">script</span><span class="tag">&gt;</span><span>&nbsp;</span><span class="comments">&lt;!--&nbsp;плагин&nbsp;jQuery.photolabel--&gt;</span><span>&nbsp;&nbsp;</span></span></li></ul></div>
+<p>3. Инициализация плагина</p>
+    <div id="hlDiv" class="dp-highlighter"><div class="bar"></div><ul class="dp-c" start="1"><li class="alt"><span><span>$(</span><span class="keyword">function</span><span>()&nbsp;{&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#block-1&nbsp;.imgWrap'</span><span>).photoLabel({&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onStart:&nbsp;<span class="keyword">function</span><span>()&nbsp;{&nbsp;</span><span class="comment">//Обработчик&nbsp;на&nbsp;событие&nbsp;-&nbsp;"start"&nbsp;(начало&nbsp;процедуры&nbsp;отметок&nbsp;на&nbsp;фото)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#block-1&nbsp;.turnOn'</span><span>).hide();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#block-1&nbsp;.turnOff'</span><span>).show();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onStop:&nbsp;<span class="keyword">function</span><span>()&nbsp;{&nbsp;</span><span class="comment">//Обработчик&nbsp;на&nbsp;событие&nbsp;-&nbsp;"stop"&nbsp;(завершение&nbsp;процедуры&nbsp;отметок&nbsp;на&nbsp;фото)</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#block-1&nbsp;.turnOn'</span><span>).show();&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$(<span class="string">'#block-1&nbsp;.turnOff'</span><span>).hide();&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recoverContainer:&nbsp;<span class="string">'#block-1&nbsp;.recoverTags'</span><span>,&nbsp;</span><span class="comment">//Контейнер&nbsp;для&nbsp;ссылки&nbsp;"восстановить&nbsp;тег"</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labelListContainer:&nbsp;<span class="string">'#block-1&nbsp;.labelList'</span><span>,&nbsp;</span><span class="comment">//Общий&nbsp;контейнер,&nbsp;для&nbsp;списка&nbsp;отметок.</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labelContainer:&nbsp;<span class="string">'#block-1&nbsp;.labels'</span><span>,&nbsp;</span><span class="comment">//UL&nbsp;контейнер&nbsp;для&nbsp;списка&nbsp;отметок</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addTagUrl:&nbsp;<span class="string">"php/tags.php?Act=addTag"</span><span>,&nbsp;</span><span class="comment">//Адрес&nbsp;скрипта,&nbsp;который&nbsp;будет&nbsp;вызван&nbsp;при&nbsp;добавлении&nbsp;метки</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removeTagUrl:&nbsp;<span class="string">"php/tags.php?Act=removeTag"</span><span>,&nbsp;</span><span class="comment">//Адрес&nbsp;скрипта,&nbsp;который&nbsp;будет&nbsp;вызван&nbsp;при&nbsp;удалении&nbsp;метки</span><span>&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;recoverTagUrl:&nbsp;<span class="string">"php/tags.php?Act=recoverTag"</span><span>,&nbsp;</span><span class="comment">//Адрес&nbsp;скрипта,&nbsp;который&nbsp;будет&nbsp;вызван&nbsp;при&nbsp;восстановлении&nbsp;метки</span><span>&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;friends:&nbsp;{&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"1"</span><span>:&nbsp;{id:&nbsp;1,&nbsp;fullname:</span><span class="string">"Татьяна&nbsp;Сидорова"</span><span>,&nbsp;url:&nbsp;</span><span class="string">"JavaScript:&nbsp;alert('здесь&nbsp;может&nbsp;быть&nbsp;переход&nbsp;на&nbsp;страницу&nbsp;Татьяны&nbsp;Сидоровой')"</span><span>},&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"2"</span><span>:&nbsp;{id:&nbsp;2,&nbsp;fullname:</span><span class="string">"Петр&nbsp;Иванов"</span><span>,&nbsp;url:&nbsp;</span><span class="string">"JavaScript:&nbsp;alert('здесь&nbsp;может&nbsp;быть&nbsp;переход&nbsp;на&nbsp;страницу&nbsp;Петра&nbsp;Иванова')"</span><span>},&nbsp;&nbsp;</span></span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"52"</span><span>:&nbsp;{id:&nbsp;52,&nbsp;fullname:&nbsp;</span><span class="string">"Артём&nbsp;Полторанин"</span><span>,&nbsp;url:&nbsp;</span><span class="string">"JavaScript:&nbsp;alert('здесь&nbsp;может&nbsp;быть&nbsp;переход&nbsp;на&nbsp;страницу&nbsp;Артема&nbsp;Полторанина')"</span><span>}&nbsp;&nbsp;</span></span></li><li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;&nbsp;</span></li><li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;});&nbsp;&nbsp;</span></li><li class="alt"><span>});&nbsp;&nbsp;</span></li></ul></div>
+
+<p>4. Настройка серверной части<br>
+    Убедитесь, что по указанным адресам в параметрах addTagUrl, removeTagUrl, recoverTagUrl, скрипты-обработчики доступны.
+    В комплекте со скриптом идет PHP файл-заглушка, эмитирующий действия сервера.
+</p>    
+
+<h3>Свойства</h3>
+<table class="prop-table">
+    <thead>
+        <tr>
+            <td width="">Свойство</td>
+            <td>По умолчанию</td>
+            <td>Описание</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="prop">startHandler</td>
+            <td class="default">null</td>
+            <td>Элемент, при нажатии на который произойдет запуск отметок</td>
+        </tr>
+        <tr>
+            <td class="prop">labelListContainer</td>
+            <td class="default">null</td>
+            <td>Общий контейнер, для списка отметок. Элементу будет присвоено display:none, в случае, если у фотографии нет отметок.</td>
+        </tr>            
+        <tr>
+            <td class="prop">labelContainer</td>
+            <td class="default">null</td>
+            <td>&lt;UL&gt; элемент, в который будет помещен список отмеченных друзей</td>
+        </tr>            
+        <tr>
+            <td class="prop">recoverContainer</td>
+            <td class="default">null</td>
+            <td>Контейнер для ссылки "восстановить тег". Если null, то восстановление отметок - отключается</td>
+        </tr>
+        <tr>
+            <td class="prop">friends</td>
+            <td class="default">{}</td>
+            <td>Список друзей. Может быть задано: объект, строка, функция.
+                <p><b>Объект</b> означает что список друзей будет перечислен прямо при инициализации плагина. Формат объекта должен быть следующий:
+                <div class="codewrap">
+                {
+                    <div class="codeblock">
+                    "ID друга": {
+                        <div class="codeblock">
+                        <span class="key">id</span>: "ID друга",<br>
+                        <span class="key">fullname</span>: "Полое имя друга"<br>
+                        <span class="key">url</span>: "ссылка на страницу друга"<br>
+                        </div>
+                    },<br>
+                    "ID друга": ......<br>
+                    </div>
+                }
+                </div></p>
+                <p><b>Строка</b> означает, что Вы указали URL по которому будет запрошен в формате json объект со списком друзей, который описан выше.
+                Запрос произойдет только после вызова метода Start().</p>
+                
+                <p>Если Вы указали <b>Функцию</b> в качестве значения параметра, то ожидается, что эта функция вернет объект со списком друзей,
+                который описан выше.</p>
+                </td>
+        </tr>            
+        <tr>
+            <td class="prop">areas</td>
+            <td class="default">[]</td>
+            <td>Отметки, которые нужно отобразить на фотографии. Массив должен быть педставлен в следующем формате:
+                <div class="codewrap">
+                [{
+                    <div class="codeblock">
+                    <span class="key">id</span>:"ID метки",<br>
+                    <span class="key">leftTopX</span>:"координата X левого верхнего угла в процентах от ширины изображения",<br>
+                    <span class="key">leftTopY</span>:"координата Y левого верхнего угла в процентах от высоты изображения",<br>
+                    <span class="key">rightBottomX</span>:"координата X правого нижнего угла в процентах от ширины изображения",<br>
+                    <span class="key">rightBottomY</span>:"координата Y правого нижнего угла в процентах от высоты изображения",<br>
+                    <span class="key">item_id</span>: "ID пользователя, отмеченного на фото или 0",<br>
+                    <span class="key">creator_id</span>:"ID пользователя, создавшего отметку",<br>
+                    <span class="key">item_url</span>:"ссылка на страницу пользователя",<br>
+                    <span class="key">item_title</span>:"подпись метки"<br>
+                    </div>
+                },
+                 ...
+                ]
+                </div>
+            </td>
+        </tr>            
+        <tr>
+            <td class="prop">onStart</td>
+            <td class="default">function() {}</td>
+            <td>callback на событие Start</td>
+        </tr>               
+        <tr>
+            <td class="prop">onStop</td>
+            <td class="default">function() {}</td>
+            <td>callback на событие Stop</td>
+        </tr>                           
+        <tr>
+            <td class="prop">addPostData</td>
+            <td class="default">{}</td>
+            <td>Дополнительные данные (ключ => значение) для POST запроса во время добавления отметки. Обычно здесь добавляют imgId.</td>
+        </tr>                                       
+        <tr>
+            <td class="prop">addTagUrl</td>
+            <td class="default">""</td>
+            <td>Адрес скрипта, который будет вызван сразу после добавлении отметки на фото.
+                В данный скрипт методом POST будут переданы следующие данные:
+                <br>
+                <table class="sub-params">
+                    <thead>
+                    <tr>
+                        <td>Параметр</td>
+                        <td>Описание</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="key">creator_id</td>
+                        <td>id пользователя, который создал отметку (равен viewerId)</td>
+                    </tr>
+                    <tr>
+                        <td class="key">left</td>
+                        <td>смещение отмеченной области по горизонтали относительно левого края изображения</td>
+                    </tr>
+                    <tr>
+                        <td class="key">top</td>
+                        <td>смещение отмеченной области по вертикали относительно верхнего края изображения</td>
+                    </tr>
+                    <tr>
+                        <td class="key">height</td>
+                        <td>высота отмеченной области</td>
+                    </tr>
+                    <tr>
+                        <td class="key">width</td>
+                        <td>ширина отмеченной области</td>
+                    </tr>
+                    <tr>
+                        <td class="key">img_height</td>
+                        <td>высота изображения</td>
+                    </tr>                        
+                    <tr>
+                        <td class="key">img_width</td>
+                        <td>ширина изображения</td>
+                    </tr>                        
+                    <tr>
+                        <td class="key">item_id</td>
+                        <td>id отмеченного пользователя</td>
+                    </tr>                        
+                    <tr>
+                        <td class="key">item_title</td>
+                        <td>подпись отмеченной области</td>
+                    </tr>                        
+                    <tr>
+                        <td class="key">item_url</td>
+                        <td>ссылка отмеченной области</td>
+                    </tr>                        
+                    <tr>
+                        <td class="key">leftTopX</td>
+                        <td>координата X левого верхнего угла в процентах от ширины изображения</td>
+                    </tr>                             
+                    <tr>
+                        <td class="key">leftTopY</td>
+                        <td>координата Y левого верхнего угла в процентах от высоты изображения</td>
+                    </tr>                             
+                    <tr>
+                        <td class="key">rightBottomX</td>
+                        <td>координата X правого нижнего угла в процентах от ширины изображения</td>
+                    </tr>                             
+                    <tr>
+                        <td class="key">rightBottomY</td>
+                        <td>координата Y правого нижнего угла в процентах от высоты изображения</td>
+                    </tr>                       
+                    <tr>
+                        <td class="key">...</td>
+                        <td>в данный список также включаются переменные переданные в параметре addPostData</td>
+                    </tr>                           
+                    </tbody>
+                </table>
+                <p>От скрипта ожидается ответ в формате json:
+                    <div class="codewrap">
+                    {
+                        <div class="codeblock">
+                        <span class="key">success</span>: true,<br>
+                        <span class="key">tag_id</span>: "ID добавлнного тега"
+                        </div>
+                    }
+                    </div>
+                </p>
+                
+            
+            </td>
+        </tr>                                       
+        <tr>
+            <td class="prop">removeTagUrl</td>
+            <td class="default">""</td>
+            <td>Адрес скрипта, который будет вызван после удаления тега</td>
+        </tr>
+        <tr>
+            <td class="prop">recoverTagUrl</td>
+            <td class="default">""</td>
+            <td>Адрес скрипта, который будет вызван перед восстановлением тега</td>
+        </tr>            
+        <tr>
+            <td class="prop">onAddTag</td>
+            <td class="default">function(tagData) {}</td>
+            <td>Функция, которая будет вызвана, после добавления тега. Параметры: tagData - объект добавленной области</td>
+        </tr>
+        <tr>
+            <td class="prop">onDeleteTag</td>
+            <td class="default">function(tagData) {}</td>
+            <td>Функция, которая будет вызвана, после удаления тега. Параметры: tagData - объект добавленной области</td>
+        </tr>            
+        <tr>
+            <td class="prop">viewerId</td>
+            <td class="default">-1</td>
+            <td>ID текущего пользователя на вашем сайте. (Данная информация позволяет корректно реализовать возможность удаления отметок,
+            т.е. удалить отметку может только тот кто отмечен или тот кто отметил или администратор (об этом ниже).
+            Предполагается что ставить отметки могут только зарегистрированные пользователи, а просматривать - все.)</td>
+        </tr>
+        <tr>
+            <td class="prop">isAdmin</td>
+            <td class="default">0</td>
+            <td>Возможные значения: 0 или 1. Если указано 1, то это означает что на фото смотрит администратор, и возле всех меток будут отображены крестики для удаления.
+                Если указано 0, то крестик(возможность удалить) возле отметки будет только в случаях: <br>
+                1. если на фото смотрит человек, которого отметили на фото (area[index].item_id == viewer_id )<br>
+                2. если на фото смотрит человек, который оставил отметку (area[index].creator_id == viewer_id)
+            </td>
+        </tr>
+        <tr>
+            <td class="prop">recoverText</td>
+            <td class="default">"восстановить"</td>
+            <td>Текстовое отображение ссылки "восстановить" удаленный тег.</td>
+        </tr>            
+        <tr>
+            <td class="prop">tagDeletedText</td>
+            <td class="default">"Отметка удалена."</td>
+            <td>Текстовое отображение надписи "Отметка удалена.".</td>
+        </tr>
+        <tr>
+            <td class="prop">noFriendText</td>
+            <td class="default">"Список пуст."</td>
+            <td>Текстовое отображение надписи "Список пуст.".</td>
+        </tr>            
+    </tbody>
+</table>
+
+<h3>Методы</h3>
+
+<table class="prop-table">
+    <thead>
+        <tr>
+            <td width="110">Метод</td>
+            <td width="220">Пример вызова</td>
+            <td>Описание</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="prop">start</td>
+            <td>$('#imgWrap').photoLabel('start')</td>
+            <td>Включает режим отметок. Курсор над изображением принимает вид перекрестия. Ожидается выделение области на изображении.</td>
+        </tr>
+        <tr>
+            <td class="prop">stop</td>
+            <td>$('#imgWrap').photoLabel('stop')</td>
+            <td>Выключает режим отметок. Также вызывается при нажатии Esc в режиме отметок.</td>
+        </tr>
+    </tbody>
+</table>
+
+ <h3>Это важно</h3>
+ <p>Плагин зависит от jQuery, jQuery.ui.dialog, jQuery.ui.resizable, jQuery.ui.draggable</p>
+
+    
+</body>
+</html>

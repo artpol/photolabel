@@ -1,0 +1,188 @@
+.photoLabel .imgWrap {
+    display: block;
+    position: relative;
+    text-align:center;
+}
+.photoLabel .imgWrap .friendDialog {
+    display: none;
+}
+.photoLabel .img-overlay {
+    background: none repeat scroll 0 0 black;
+    cursor: crosshair;
+}
+.photoLabel .img-area {
+    cursor: crosshair;
+    font-size: 0;
+    overflow: hidden;
+}
+.photoLabel .img-cont .rel {
+    position: relative;
+}
+.photoLabel .img-taglabel {
+    border: medium none;
+}
+.photoLabel .img-taglabel span {
+    background: none repeat scroll 0 0 black;
+    border-radius: 3px 3px 3px 3px;
+    border:1px solid white;
+    bottom: 0;
+    color: white;
+    display: none;
+    left: 0;
+    opacity: 0.7;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    width: auto;
+}
+.photoLabel .img-area .ui-resizable-handle {
+    background: none repeat scroll 0 0 white;
+    border: medium none;
+    box-shadow: 0 0 3px #969696;
+    height: 7px;
+    opacity: 0.7;
+    position: absolute;
+    width: 7px;
+    z-index: 25;
+}
+.photoLabel .img-area .ui-resizable-handle:hover {
+    opacity: 0.9;
+}
+.photoLabel .img-area .ui-resizable-nw {
+    left: 0;
+    top: 0;
+}
+.photoLabel .img-area .ui-resizable-n {
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
+.photoLabel .img-area .ui-resizable-ne {
+    left: 100%;
+    margin-left: -7px;
+    top: 0;
+}
+.photoLabel .img-area .ui-resizable-w {
+    left: 0;
+    margin-top: -3px;
+    top: 50%;
+}
+.photoLabel .img-area .ui-resizable-e {
+    left: 100%;
+    margin-left: -7px;
+    margin-top: -3px;
+    top: 50%;
+}
+.photoLabel .img-area .ui-resizable-sw {
+    bottom: 0;
+    left: 0;
+}
+.photoLabel .img-area .ui-resizable-s {
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+.photoLabel .img-area .ui-resizable-se {
+    bottom: 0;
+    left: 100%;
+    margin-left: -7px;
+}
+
+#labelsInfo {
+    background: none repeat scroll 0 0 #3F3F3F;
+    display: none;
+    padding: 10px 0;
+    text-align:center;
+    color: white;
+}
+
+#labelsInfo a {
+    font-weight:bold;
+    color: white;
+}
+
+.photoLabel .labelBox {
+    padding-top: 10px;
+    text-align: left;
+}
+.photoLabel .labelList {
+    display: none;
+}
+
+.photoLabel .labels {
+    display: inline;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.photoLabel .labels li {
+    display: inline;
+}
+.photoLabel .labels .tag {
+    cursor: pointer;
+}
+.photoLabel .labels i {
+    font-style: normal;
+}
+.photoLabel .labels .del {
+    background: url("../img/close.png") no-repeat scroll center center transparent;
+    font-size: 0;
+    height: 0;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 0;
+}
+.photoLabel .recoverTags {
+    display: none;
+    padding: 7px 0;
+}
+
+.photoLabel .tag_view {
+    border: 2px solid white;
+    display: none;
+    overflow: hidden;
+}
+
+.photoLabel .img-view-area {
+    position: absolute;
+}
+
+
+.friendDialog .findbox {
+    background: none repeat scroll 0 0 #eee;
+    border-bottom: 1px solid #ACACAC;
+    border-top: 1px solid #ACACAC;
+    padding: 10px;
+}
+.friendDialog .findbox input {
+    width: 97%;
+}
+.friendDialog .userbox {
+    list-style: none outside none;
+    margin: 0;
+    max-height: 200px;
+    overflow: auto;
+    padding: 0px;
+}
+.friendDialog .userbox li {
+}
+.friendDialog .userbox li a {
+    display: block;
+    line-height: 18px;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+.friendDialog .userbox li a:hover {
+    background: none repeat scroll 0 0 #E0E9F1;
+    color: black;
+}
+
+.friendDialog .userbox .empty {
+    padding:5px 10px;
+    text-align:center;
+    color: gray;    
+}
+
+.ui-dialog, .ui-dialog .ui-dialog-content {
+    overflow: visible;
+}

@@ -1,0 +1,45 @@
+.prop-table {
+    border-collapse:collapse;
+}
+
+.prop-table td {
+    border-top:1px solid #EBEBEB;
+    vertical-align: top;
+    padding:5px;
+}
+
+.prop-table thead td {
+    background: #F5F4F2;
+}
+
+.prop-table .prop {
+    color: green;
+    width:110px;
+}
+
+.prop-table .default {
+    color: black;
+    width:110px;
+}
+
+.padd-10 {
+    padding:0 10px 10px;
+}
+
+.codeblock {
+    padding-left:25px;
+}
+.key {
+    color: green;
+}
+
+.codewrap {
+    font-family: 'Courier New',Courier,monospace;
+    background: #efefef;
+}
+
+.sub-params {
+    border-collapse:collapse;
+    background: #F7F7F7;
+    width:100%;
+}
