@@ -236,9 +236,9 @@
                 
                 onStart: function() {}, //Событие - начало отметок.
                 onStop: function() {}, //Событие - завершение отметок.
-                addTagUrl: "php/tags.php?Act=addTag", //Адрес, который будет вызван при добавлении метки
-                removeTagUrl: "php/tags.php?Act=removeTag",
-                recoverTagUrl: "php/tags.php?Act=recoverTag",
+                addTagUrl: "", //Адрес, который будет вызван при добавлении метки
+                removeTagUrl: "", //Адрес скрипта, который будет вызван при удалении метки
+                recoverTagUrl: "", //Адрес скрипта, который будет вызван при восстановлении метки
                 onAddTag: function() {}, //Событие - сохранение отметки
                 onDeleteTag: function() {},  //Событие - удаление отметки
                 isAdmin: 0, //Если 1, то возле каждой отметки появится крестик для удаления
